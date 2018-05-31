@@ -22,6 +22,9 @@ job('wllab-deploy-test') {
     env('WEBLOGIC_TARGET', 'AdminServer')
   }
   steps {
-    maven('clean package antrun:run@deploy-to-weblogic')
+    maven {
+      goals('clean package antrun:run@deploy-to-weblogic')
+      mavenInstallation('maven-3.5.3')
+    }
   }
 }
