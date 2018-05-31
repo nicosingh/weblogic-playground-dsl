@@ -1,4 +1,4 @@
-job('wllab-deploy-test') {
+job('wllab-deploy') {
   triggers {
     scm '* * * * *'
   }
