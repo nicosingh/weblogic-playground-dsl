@@ -23,7 +23,7 @@ job('wllab-deploy') {
     }
   }
   environmentVariables {
-    env('ARTIFACT_PATH', 'target/wllab.war')
+    env('ARTIFACT_PATH', 'target/wllab-${ARTIFACT_VERSION}.war')
     env('WEBLOGIC_APP_NAME', 'wllab')
     env('WEBLOGIC_URL', '1.2.3.4')
     env('WEBLOGIC_TARGET', 'AdminServer')
