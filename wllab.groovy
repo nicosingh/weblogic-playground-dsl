@@ -1,3 +1,7 @@
+job('wllab-component') {
+  //dummy job to have an upstream job at wllab-deploy
+}
+
 job('wllab-deploy') {
   triggers {
     scm '* * * * *'
