@@ -7,7 +7,7 @@ job('wllab-deploy') {
     runParam('upstreamJob', 'wllab-component', '', 'SUCCESSFUL')
   }
   environmentVariables {
-    groovy(readFileFromWorkspace("scripts/environmentVariablesDeploy.groovy"))
+    groovy(readFile("scripts/environmentVariablesDeploy.groovy"))
   }
   triggers {
     scm '* * * * *'
@@ -33,7 +33,7 @@ job('wllab-deploy') {
   }
   steps {
     maven {
-      goals('clean package antrun:run@deploy-to-weblogic')
+      goals('clean package antrun:run@download-artifact antrun:run@deploy-to-weblogic')
       mavenInstallation('maven-3.5.3')
     }
   }

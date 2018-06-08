@@ -10,4 +10,5 @@ def upstreamJobName = parameters.find { it.name == 'environment' } != null ? par
 def upstreamJob = parameters.find { it.name == upstreamJobName }
 out['ARTIFACT_VERSION'] = upstreamJob.getRun().getEnvVars().get('BUILD_NUMBER')
 
+//return result
 return out
