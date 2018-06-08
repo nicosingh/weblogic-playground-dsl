@@ -7,7 +7,7 @@ job('wllab-deploy') {
     runParam('upstreamJob', 'wllab-component', '', 'SUCCESSFUL')
   }
   environmentVariables {
-    groovy(readFile("scripts/environmentVariablesDeploy.groovy"))
+    groovy(readFileFromWorkspace("scripts/environmentVariablesDeploy.groovy"))
   }
   triggers {
     scm '* * * * *'
