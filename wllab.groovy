@@ -29,12 +29,12 @@ job('wllab-component-test') {
       resolverDetails {
         artifactoryName('artifactory-local')
         artifactoryUrl('http://artifactory:8081/artifactory')
-        deployReleaseRepository {
+        resolveReleaseRepository {
           keyFromText('')
           keyFromSelect('')
           dynamicMode(false)
         }
-        deploySnapshotRepository {
+        resolveSnapshotRepository {
           keyFromText('')
           keyFromSelect('')
           dynamicMode(false)
