@@ -25,10 +25,6 @@ job('wllab-component-test') {
           keyFromSelect('libs-snapshot-local')
           dynamicMode(false)
         }
-      }
-      resolverDetails {
-        artifactoryName('artifactory-local')
-        artifactoryUrl('http://artifactory:8081/artifactory')
         resolveReleaseRepository {
           keyFromText('')
           keyFromSelect('')
@@ -39,6 +35,8 @@ job('wllab-component-test') {
           keyFromSelect('')
           dynamicMode(false)
         }
+        userPluginKey('')
+        userPluginParams('')
       }
       deployerCredentialsConfig {
         credentialsId('artifactory-credentials')
