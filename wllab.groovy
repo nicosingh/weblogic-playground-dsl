@@ -39,7 +39,10 @@ job('wllab-component-test') {
         userPluginParams('')
       }
       deployerCredentialsConfig {
+        username('')
+        password('')
         credentialsId('artifactory-credentials')
+        overridingCredentials(false)
       }
       deployArtifacts(true)
       includeEnvVars(false)
