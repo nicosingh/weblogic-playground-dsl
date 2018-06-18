@@ -1,5 +1,61 @@
-job('wllab-component') {
-  //dummy job to have an upstream job at wllab-deploy
+job('wllab-component-test') {
+  triggers {
+    scm '* * * * *'
+  }
+  scm {
+    git {
+      remote {
+        github('nicosingh/wllab', 'https')
+        branch('master')
+      }
+    }
+  }
+  wrappers {
+    artifactoryMaven3Configurator {
+      deployerDetails {
+        artifactoryName('artifactory-local')
+        artifactoryUrl('http://artifactory:8081/artifactory')
+        deployReleaseRepository {
+          keyFromSelect('libs-release-local')
+        }
+        deploySnapshotRepository {
+          keyFromSelect('libs-snapshot-local')
+        }
+      }
+      resolverDetails {
+        artifactoryName('artifactory-local')
+        artifactoryUrl('http://artifactory:8081/artifactory')
+      }
+      deployerCredentialsConfig {
+        credentialsId('artifactory-credentials')
+      }
+      deployArtifacts(true)
+      includeEnvVars(false)
+      deployBuildInfo(true)
+      runChecks(false)
+      includePublishArtifacts(false)
+      discardOldBuilds(false)
+      discardBuildArtifacts(true)
+      asyncBuildRetention(false)
+      enableIssueTrackerIntegration(false)
+      filterExcludedArtifactsFromBuild(true)
+      enableResolveArtifacts(false)
+      disableLicenseAutoDiscovery(false)
+      aggregateBuildIssues(false)
+      recordAllDependencies(false)
+      blackDuckRunChecks(false)
+      blackDuckIncludePublishedArtifacts(false)
+      autoCreateMissingComponentRequests(true)
+      autoDiscardStaleComponentRequests(true)
+      overrideBuildName(false)
+    }
+  }
+  steps {
+    maven {
+      goals('clean install')
+      mavenInstallation('maven-3.5.3')
+    }
+  }
 }
 
 job('wllab-deploy') {
@@ -31,7 +87,7 @@ job('wllab-deploy') {
   }
   steps {
     maven {
-      goals('clean package antrun:run@download-artifact antrun:run@deploy-to-weblogic')
+      goals('clean antrun:run@download-artifact antrun:run@deploy-to-weblogic')
       mavenInstallation('maven-3.5.3')
     }
   }

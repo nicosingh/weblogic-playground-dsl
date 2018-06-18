@@ -9,6 +9,7 @@ def upstreamJobName = parameters.find { it.name == 'environment' } != null ? par
 //get artifact version from upstream job
 def upstreamJob = parameters.find { it.name == upstreamJobName }
 out['ARTIFACT_VERSION'] = upstreamJob.getRun().getEnvVars().get('BUILD_NUMBER')
+out['ARTIFACT_URL'] = "http://artifactory:8081/artifactory/libs-release-local/guga/wllab/" + out['ARTIFACT_VERSION'] + "/wllab-" + out['ARTIFACT_VERSION'] + ".war"
 
 //return result
 return out
