@@ -16,15 +16,29 @@ job('wllab-component-test') {
         artifactoryName('artifactory-local')
         artifactoryUrl('http://artifactory:8081/artifactory')
         deployReleaseRepository {
+          keyFromText('')
           keyFromSelect('libs-release-local')
+          dynamicMode(false)
         }
         deploySnapshotRepository {
+          keyFromText('')
           keyFromSelect('libs-snapshot-local')
+          dynamicMode(false)
         }
       }
       resolverDetails {
         artifactoryName('artifactory-local')
         artifactoryUrl('http://artifactory:8081/artifactory')
+        deployReleaseRepository {
+          keyFromText('')
+          keyFromSelect('')
+          dynamicMode(false)
+        }
+        deploySnapshotRepository {
+          keyFromText('')
+          keyFromSelect('')
+          dynamicMode(false)
+        }
       }
       deployerCredentialsConfig {
         credentialsId('artifactory-credentials')
