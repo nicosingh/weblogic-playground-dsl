@@ -12,6 +12,32 @@ job('wllab-component-test') {
   }
   wrappers {
     artifactoryMaven3Configurator {
+      details {
+        artifactoryName('artifactory-local')
+        artifactoryUrl('http://artifactory:8081/artifactory')
+        deployReleaseRepository {
+          keyFromText('')
+          keyFromSelect('libs-release-local')
+          dynamicMode(false)
+        }
+        deploySnapshotRepository {
+          keyFromText('')
+          keyFromSelect('libs-snapshot-local')
+          dynamicMode(false)
+        }
+        resolveReleaseRepository {
+          keyFromText('')
+          keyFromSelect('')
+          dynamicMode(false)
+        }
+        resolveSnapshotRepository {
+          keyFromText('')
+          keyFromSelect('')
+          dynamicMode(false)
+        }
+        userPluginKey('')
+        userPluginParams('')
+      }
       deployerDetails {
         artifactoryName('artifactory-local')
         artifactoryUrl('http://artifactory:8081/artifactory')
