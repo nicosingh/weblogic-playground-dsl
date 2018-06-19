@@ -103,6 +103,10 @@ job('wllab-component-test') {
         overridingCredentials(false)
       }
       deployArtifacts(true)
+      artifactDeploymentPatterns {
+        includePatterns('')
+        excludePatterns('')
+      }
       includeEnvVars(false)
       deployBuildInfo(true)
       runChecks(false)
