@@ -96,6 +96,12 @@ job('wllab-component-test') {
         credentialsId('artifactory-credentials')
         overridingCredentials(false)
       }
+      resolverCredentialsConfig {
+        username('')
+        password('')
+        credentialsId('')
+        overridingCredentials(false)
+      }
       deployArtifacts(true)
       includeEnvVars(false)
       deployBuildInfo(true)
