@@ -1,4 +1,4 @@
-job('wllab-component-test') {
+job('wllab-component') {
   triggers {
     scm '* * * * *'
   }
