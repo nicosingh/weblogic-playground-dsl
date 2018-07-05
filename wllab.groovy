@@ -143,9 +143,11 @@ job('wllab-component') {
     }
   }
   steps {
-    maven {
+    maven3Builder {
+      mavenName('maven-3.5.3')
+      rootPom('')
       goals('clean install')
-      mavenInstallation('maven-3.5.3')
+      mavenOpts('')
     }
   }
 }
